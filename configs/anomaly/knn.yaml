@@ -1,0 +1,9 @@
+schema_version: 1
+seed: 20260908
+embedding_backbone: efficientnet_b0
+embedding_source: registered_classifier_backbone
+conditional_on: denomination
+k: 5
+calibration_quantile: 0.95
+corruptions: [tear, stain, occlusion, fade, crease]
+claim_boundary: synthetic_damage_proxy_only

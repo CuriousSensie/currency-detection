@@ -1,0 +1,41 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+.coverage
+htmlcov/
+
+# Node
+web/node_modules/
+web/.next/
+web/playwright-report/
+web/test-results/
+web/*.tsbuildinfo
+
+# Data, models, and experiment stores
+data/raw/**
+data/processed/**
+data/external/**
+artifacts/models/**
+artifacts/predictions/**
+artifacts/mlruns/**
+!data/**/.gitkeep
+!artifacts/**/.gitkeep
+!artifacts/results/**
+
+# Environment and local configuration
+.env
+.env.*
+!.env.example
+.impeccable/config.local.json
+.impeccable/review/
+.impeccable/mocks/
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/

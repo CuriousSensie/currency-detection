@@ -1,0 +1,82 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pkr-vision"
+version = "0.1.0"
+description = "Reproducible Pakistani banknote classification research system"
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+license = { text = "AGPL-3.0-only" }
+authors = [{ name = "Hasnaat Khalid" }]
+dependencies = [
+  "fastapi>=0.116,<1",
+  "httpx>=0.28,<1",
+  "numpy>=2.1,<2.4",
+  "onnxruntime>=1.20,<2",
+  "Pillow>=11,<13",
+  "pydantic>=2.10,<3",
+  "pydantic-settings>=2.7,<3",
+  "python-multipart>=0.0.20,<1",
+  "PyYAML>=6.0.2,<7",
+  "structlog>=25,<26",
+  "typer>=0.15,<1",
+  "uvicorn[standard]>=0.34,<1",
+]
+
+[project.optional-dependencies]
+train = [
+  "albumentations>=2,<3",
+  "matplotlib>=3.10,<4",
+  "onnx>=1.17,<2",
+  "pandas>=2.2,<3",
+  "roboflow>=1.1,<2",
+  "scikit-learn>=1.6,<2",
+  "seaborn>=0.13,<1",
+  "timm>=1.0,<2",
+  "torch>=2.6,<3",
+  "torchvision>=0.21,<1",
+  "ultralytics>=8.3,<9",
+]
+dev = [
+  "mypy>=1.15,<2",
+  "pytest>=8.3,<9",
+  "pytest-asyncio>=0.25,<1",
+  "pytest-cov>=6,<7",
+  "ruff>=0.9,<1",
+  "types-PyYAML>=6.0.12,<7",
+]
+
+[project.scripts]
+pkrvision = "pkrvision.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["ml/src/pkrvision", "api"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q --strict-markers"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 120
+src = ["ml/src", "api", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "RUF"]
+
+[tool.ruff.lint.per-file-ignores]
+"api/app/main.py" = ["B008"]
+"*.ipynb" = ["E401", "E501", "I001"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+packages = ["pkrvision", "api.app"]
+mypy_path = "ml/src"
+plugins = ["pydantic.mypy"]
+
+[[tool.mypy.overrides]]
+module = ["onnxruntime.*", "roboflow.*", "torch.*", "ultralytics.*", "timm.*", "torchvision.*"]
+ignore_missing_imports = true

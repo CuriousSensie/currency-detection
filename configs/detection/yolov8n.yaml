@@ -1,0 +1,16 @@
+model: yolov8n.pt
+data: data/processed/canonical-v1/dataset.yaml
+project: artifacts/mlruns/detection
+name: yolov8n-seed-20260908
+seed: 20260908
+deterministic: true
+epochs: 100
+patience: 20
+imgsz: 640
+batch: 16
+workers: 2
+device: 0
+pretrained: true
+plots: true
+save: true
+val: true

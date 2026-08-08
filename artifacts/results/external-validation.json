@@ -1,0 +1,19 @@
+{
+  "experiment_id": "abduls-cross-dataset-validation-v1",
+  "status": "complete",
+  "kind": "external",
+  "config_sha256": "1f7e484ef6a651b67fd72b567db708b0dbb3ec0b28d7d24a023f188b72e4d777",
+  "dataset_manifest_sha256": "d36533b491482a3eb4b84cdf6739ab346ac6f5d619fc59e088eca4d0e0e08413",
+  "checkpoint_sha256": "c2f8fd459dea6585f84d62a0d29bf9f3f17b9ffd44633ba07f2294392ad6204c",
+  "metrics": {
+    "accuracy": 0.9755351681957186,
+    "balanced_accuracy": 0.9691933916423713,
+    "macro_f1": 0.9721130928073041,
+    "expected_calibration_error": 0.02446482888784618,
+    "top2_accuracy": 0.9877675840978594
+  },
+  "notes": [
+    "Evaluated once on isolated Abduls crops using the validation-selected full-data classifier.",
+    "This is public cross-dataset evaluation, not user-collected real-world validation."
+  ]
+}

@@ -1,0 +1,25 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    environment:
+      PKR_MODEL_DIR: /models
+      PKR_CLASSIFIER_PATH: /models/classifier.onnx
+      PKR_MODEL_MANIFEST: /models/manifest.json
+      PKR_MAX_CONCURRENT_INFERENCES: "2"
+      PKR_CORS_ORIGINS: http://localhost:3000
+    volumes:
+      - ./artifacts/models/current:/models:ro
+    ports:
+      - "8000:8000"
+  web:
+    build:
+      context: .
+      dockerfile: web/Dockerfile
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8000
+    depends_on:
+      - api
+    ports:
+      - "3000:3000"

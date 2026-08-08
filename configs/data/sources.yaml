@@ -1,0 +1,16 @@
+schema_version: 1
+sources:
+  - source_id: ucp-pakistani-currency-note-data
+    url: https://universe.roboflow.com/ucp-xi9nf/pakistani-currency-note-data
+    version: 1
+    declared_license: CC-BY-4.0
+    expected_classes: ["10", "100", "1000", "20", "50", "500", "5000", "75"]
+    inclusion: included_for_image_classification_only
+    excluded_versions:
+      "2": pre-augmented-threefold-export-confounds-registered-ablation
+  - source_id: abduls-pkr-notes
+    url: https://universe.roboflow.com/abduls/pkr_notes
+    version: 1
+    declared_license: Public-Domain
+    expected_classes: ["PKR_10", "PKR_100", "PKR_1000", "PKR_20", "PKR_50", "PKR_500", "PKR_5000"]
+    inclusion: included_for_cross_dataset_evaluation_only

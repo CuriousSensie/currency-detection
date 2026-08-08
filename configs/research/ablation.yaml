@@ -1,0 +1,28 @@
+schema_version: 1
+seed: 20260908
+architecture: efficientnet_b0
+pretrained: imagenet
+sample_sizes_per_class: [10, 50, 100, 500, full]
+conditions: [no_augmentation, registered_augmentation]
+max_epochs: 50
+early_stopping_patience: 8
+optimizer: adamw
+learning_rate: 0.0003
+weight_decay: 0.0001
+batch_size: 32
+input_size: 224
+selection_metric: validation_macro_f1
+metrics: [accuracy, balanced_accuracy, macro_f1, per_class_recall, expected_calibration_error]
+bootstrap_iterations: 2000
+claim_boundary: exploratory_single_seed
+production_quality_gate:
+  internal_test_macro_f1_min: 0.90
+  external_macro_f1_min: 0.70
+  internal_per_class_recall_min: 0.75
+augmentation:
+  rotation_degrees: 12
+  perspective_scale: 0.08
+  brightness_contrast_probability: 0.35
+  blur_probability: 0.15
+  noise_probability: 0.15
+  coarse_dropout_probability: 0.10

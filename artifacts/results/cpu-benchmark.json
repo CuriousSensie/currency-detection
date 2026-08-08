@@ -1,0 +1,21 @@
+{
+  "experiment_id": "onnx-cpu-benchmark-v1",
+  "status": "complete",
+  "kind": "benchmark",
+  "config_sha256": "1f7e484ef6a651b67fd72b567db708b0dbb3ec0b28d7d24a023f188b72e4d777",
+  "dataset_manifest_sha256": "d36533b491482a3eb4b84cdf6739ab346ac6f5d619fc59e088eca4d0e0e08413",
+  "checkpoint_sha256": "c2f8fd459dea6585f84d62a0d29bf9f3f17b9ffd44633ba07f2294392ad6204c",
+  "metrics": {
+    "warm_combined_mean_ms": 6.908791880559875,
+    "warm_combined_p95_ms": 8.526713005267084,
+    "warm_inference_mean_ms": 5.771963801234961,
+    "cold_load_plus_first_request_ms": 100.7142509915866,
+    "sequential_throughput_images_per_second": 144.6710300931186,
+    "model_size_bytes": 16043539,
+    "process_peak_rss_kib": 122004
+  },
+  "notes": [
+    "Local single-process CPU benchmark with one fixed UCP test image per class; image decoding excluded.",
+    "Raw benchmark report is stored in artifacts/models/release/cpu-benchmark.json."
+  ]
+}
